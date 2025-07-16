@@ -1,0 +1,110 @@
+# 📦 Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 🔐 Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 📁 File uploads and user data
+uploads/
+files/
+temp/
+tmp/
+
+# 🏗️ Build outputs
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# 📊 Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# 🧪 Testing
+coverage/
+*.lcov
+.coverage/
+.nyc_output/
+
+# 🚀 Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# 🌐 Optional npm cache directory
+.npm
+
+# 🔧 Optional eslint cache
+.eslintcache
+
+# 💼 Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# 📝 Optional REPL history
+.node_repl_history
+
+# 📦 Output of 'npm pack'
+*.tgz
+
+# 🔒 Yarn Integrity file
+.yarn-integrity
+
+# 🐳 Docker
+.dockerignore
+docker-compose.override.yml
+
+# 💾 Database backups
+backup/
+*.dump
+*.sql
+
+# 🖥️ OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# 🎨 IDE and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 🔄 TypeScript
+*.js.map
+
+# 🛠️ Tools
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.vuepress/dist/
+
+# 📱 Mobile
+.expo/
+.expo-shared/
+
+# 🧹 Temporary files
+*.tmp
+*.temp 
