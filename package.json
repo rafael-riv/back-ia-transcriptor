@@ -4,6 +4,9 @@
     "test": "jest"
   },
   "dependencies": {
+    "@speechmatics/auth": "^0.0.1",
+    "@speechmatics/batch-client": "^5.1.0",
+    "@speechmatics/real-time-client": "^7.0.2",
     "@types/cors": "^2.8.19",
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
