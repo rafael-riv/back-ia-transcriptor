@@ -9,16 +9,16 @@ const apiKey = process.env.API_KEY;
 
 export class RealtimeService {
   private client: RealtimeClient;
-  private socket?: Socket;
+  private socket: Socket;
+  private isInitialized = false;
 
-  constructor() {
+  constructor(socket: Socket) {
     this.client = new RealtimeClient();
+    this.socket = socket;
     this.addEventListeners();
   }
 
-  public async init(socket: Socket) {
-    this.socket = socket;
-
+  public async init() {
     if (!apiKey) {
       this.socket.emit('error', 'API_KEY not configured');
       return;
@@ -28,7 +28,7 @@ export class RealtimeService {
       const jwt = await createSpeechmaticsJWT({
         type: 'rt',
         apiKey,
-        ttl: 60,
+        ttl: 3600,
       });
 
       await this.client.start(jwt, {
@@ -38,6 +38,7 @@ export class RealtimeService {
           operating_point: 'enhanced',
         },
       });
+      this.isInitialized = true;
     } catch (error) {
       this.socket.emit('error', `Error initializing Speechmatics client: ${(error as Error).message}`);
     }
@@ -60,10 +61,13 @@ export class RealtimeService {
   }
 
   public sendAudio(audio: Buffer) {
+    if (!this.isInitialized) return;
     this.client.sendAudio(audio);
   }
 
   public stopRecognition() {
+    if (!this.isInitialized) return;
     this.client.stopRecognition();
+    this.isInitialized = false;
   }
 } 

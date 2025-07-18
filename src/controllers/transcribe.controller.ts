@@ -6,9 +6,9 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const apiKey = process.env.API_KEY_SPEECHMATICS;
+const apiKey = process.env.API_KEY;
 if (!apiKey) {
-  console.warn('Warning: API_KEY_SPEECHMATICS not found in environment variables');
+  console.warn('Warning: API_KEY not found in environment variables');
 }
 
 export const createTranscript = async (req: Request, res: Response) => {
