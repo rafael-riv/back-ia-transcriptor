@@ -86,3 +86,39 @@ export const createTranscript = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const saveRealtimeTranscript = async (req: Request, res: Response) => {
+  try {
+    const { text, filename } = req.body;
+    const user = (req as any).user;
+    
+    if (!text || !user) {
+      return res.status(400).json({ msg: "Text and user required" });
+    }
+
+    // Guardar en base de datos
+    const transcript = await Transcript.create({
+      owner: user.id,
+      filename: filename || `Transcripción en tiempo real - ${new Date().toISOString()}`,
+      text: text,
+    });
+
+    res.status(201).json({
+      success: true,
+      transcript: {
+        id: transcript._id,
+        filename: transcript.filename,
+        text: transcript.text,
+        createdAt: transcript.createdAt
+      }
+    });
+
+  } catch (error) {
+    console.error('Save realtime transcript error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    res.status(500).json({ 
+      msg: "Error saving transcript", 
+      error: process.env.NODE_ENV === 'development' ? errorMessage : undefined 
+    });
+  }
+};
