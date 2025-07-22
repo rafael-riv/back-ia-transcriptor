@@ -71,7 +71,7 @@ npm test
 El proyecto incluye un `docker-compose.yml` para facilitar el despliegue. Para utilizarlo:
 
 ```bash
-docker-compose up
+docker-compose up -d
 ```
 
 ## Tecnologías Principales
